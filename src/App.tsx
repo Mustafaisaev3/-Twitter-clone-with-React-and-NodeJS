@@ -1,14 +1,21 @@
 import React from 'react';
 import './App.css';
-import SignIn from './pages/SignIn';
 import { ManagedUIContext } from './context/ui.context';
 import ManagedModal from './components/modal/managed-modal';
+import { Switch, Route } from 'react-router-dom';
+
+// Pages
+import {SignIn} from './pages/SignIn';
+import {Home} from './pages/Home';
 
 function App() {
   return (
     <>
     <ManagedUIContext>
-      <SignIn />
+      <Switch>
+        <Route path='/signin' component={SignIn}/>
+        <Route path='/' component={Home}/>
+      </Switch>
       <ManagedModal />
     </ManagedUIContext>
     </>

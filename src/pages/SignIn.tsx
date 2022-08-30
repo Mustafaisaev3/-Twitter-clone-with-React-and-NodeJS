@@ -6,7 +6,7 @@ import {BsTwitter} from 'react-icons/bs'
 import Button from '../components/Button';
 import { useUI } from '../context/ui.context';
 
-const SignIn = () => {
+export const SignIn = () => {
   const {openModal, setModalView, modalView} = useUI()
 
   const handleSignInModal = () => {
@@ -14,14 +14,12 @@ const SignIn = () => {
     return openModal()
   }
 
-  console.log(modalView)
-
   return (
     <div className="flex items-center justify-center h-screen">
       <div className='bg-[#71c0f9] h-full w-1/2 relative overflow-hidden'>
-          {/* <div className='absolute top-0 left-0 z-10'>
-              <img src={TwitterLogo} className='w-[150%] h-[150%] max-w-[none]' alt="" />
-          </div> */}
+          <div className='absolute top-0 left-0 z-10'>
+              <img src={require('../assets/images/twitter_logo.png')} className='w-[150%] h-[150%] max-w-[none]' alt="" />
+          </div>
           <div className='w-full h-full flex flex-col items-center justify-center absolute top-0 left-0 z-10'>
             <div className='w-1/2'>
                 <div className='flex pb-8'>
@@ -47,9 +45,9 @@ const SignIn = () => {
             </div>
             <div className='text-3xl font-bold pb-10'>Узнайте что происходит в мире прямо сейчас</div>
             <div className='flex flex-col w-full'>
-                <div className='text-sm font-medium pb-[10px]'>Присоединяйтесь к твиттеру прямо сейчас</div>
-                <Button onClick={handleSignInModal} buttonStyle='primary'>hello button</Button>
-                <Button onClick={handleSignInModal} buttonStyle='secondary'>hello button</Button>
+                <div className='text-sm font-medium pb-[20px]'>Присоединяйтесь к твиттеру прямо сейчас</div>
+                <Button onClick={handleSignInModal} buttonStyle='primary'>Зарегистрироваться</Button>
+                <Button onClick={handleSignInModal} buttonStyle='secondary'>Войти</Button>
             </div>
           </div>
       </div>
@@ -57,4 +55,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+// export default SignIn

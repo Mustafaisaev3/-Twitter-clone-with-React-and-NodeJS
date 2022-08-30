@@ -15,6 +15,7 @@ type MODAL_VIEWS =
   | "SIGN_IN_VIEW"
   | "LOGIN_VIEW"
   | "FORGET_PASSWORD"
+  | "ADD_TWEET_MODAL"
   | "PRODUCT_VIEW";
 
 type Action = 
@@ -50,7 +51,7 @@ const UIReducer = (state: State, action: Action) => {
     case 'SET_MODAL_VIEW':
       return {
         ...state,
-        view: action.view
+        modalView: action.view
       }
   }
 }

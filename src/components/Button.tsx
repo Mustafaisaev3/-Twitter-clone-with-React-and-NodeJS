@@ -3,7 +3,7 @@ import { JsxElement } from 'typescript'
 
 interface Button {
     children?: any,
-    onClick?: () => void,
+    onClick: () => void,
     type?: any,
     buttonStyle?: string,
     buttonSize?: string,

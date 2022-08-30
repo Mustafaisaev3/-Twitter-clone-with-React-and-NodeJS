@@ -11,7 +11,7 @@ type ModalType = {
 }
 
 const Modal = ({open, onClose, children}: ModalType) => {
-    const modalInnerref = useRef()
+    const modalInnerref = useRef(null)
     const {closeModal} = useUI()
     useOnClickOutside(modalInnerref, () => closeModal())
   return (
