@@ -1,0 +1,133 @@
+{
+    "tweets": [
+        {
+            "id": "6315019158c87b069967065c",
+            "text": "Occaecat fugiat ad consequat cupidatat amet nostrud commodo officia ex qui. Id eiusmod veniam ut consequat. Magna sint veniam fugiat duis quis consectetur. Adipisicing anim consequat cillum ad mollit eiusmod laborum elit exercitation. Laboris in incididunt culpa enim.",
+            "user": {
+              "fullname": "Huff Ferrell",
+              "username": "austin",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?2"
+            }
+          },
+          {
+            "id": "6315019111ed648053601687",
+            "text": "Et veniam dolore est ut quis consectetur magna commodo ea. Aliquip veniam do consequat in nulla aliquip. Quis consectetur sint veniam sunt eu deserunt. Consectetur qui quis ad tempor nostrud quis fugiat deserunt. Velit laborum anim culpa deserunt sit voluptate exercitation nulla ea cillum pariatur in aliquip pariatur.",
+            "user": {
+              "fullname": "Roach Kline",
+              "username": "obrien",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?7"
+            }
+          },
+          {
+            "id": "63150191cc1471ee47c057f9",
+            "text": "Non reprehenderit quis veniam ea aute elit incididunt enim et labore dolor. Eu labore sint reprehenderit eu commodo exercitation Lorem sunt adipisicing nulla. Ea id esse ad minim dolor pariatur eiusmod laborum dolore ullamco voluptate occaecat ipsum excepteur. Ullamco elit nulla ex sit velit officia. Ea nostrud eiusmod aliquip ea aliqua et aute non id.",
+            "user": {
+              "fullname": "Walls Cochran",
+              "username": "gross",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?7"
+            }
+          },
+          {
+            "id": "63150191dce88461bb6c9e03",
+            "text": "Culpa incididunt do in cillum reprehenderit eiusmod exercitation officia veniam ad aliquip ad irure. Commodo sit adipisicing esse consequat enim anim nisi. Ut sunt consectetur quis exercitation officia deserunt irure sint pariatur ut. Laboris eu amet nostrud elit minim occaecat. Irure voluptate pariatur laboris esse adipisicing occaecat cupidatat adipisicing velit tempor deserunt labore incididunt ad.",
+            "user": {
+              "fullname": "Massey Riggs",
+              "username": "santana",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?9"
+            }
+          },
+          {
+            "id": "63150191837d184549883fea",
+            "text": "Lorem pariatur consectetur dolore anim consectetur sit sunt duis proident. Eu ullamco ut sit officia mollit excepteur officia aliqua. Deserunt laborum dolor voluptate consequat excepteur amet ipsum. Consequat dolor voluptate ullamco culpa elit. Dolore laboris enim est aliqua pariatur reprehenderit id.",
+            "user": {
+              "fullname": "Barnett Glass",
+              "username": "eunice",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?8"
+            }
+          },
+          {
+            "id": "63150191adf96cd61041da88",
+            "text": "Tempor ea aliquip ad eiusmod aliqua aliqua duis velit. Fugiat quis enim magna ut laborum laborum. Ea aute id est anim. Labore deserunt veniam Lorem in consequat excepteur duis eu. Ex sint cupidatat minim excepteur magna laborum occaecat et sint ea.",
+            "user": {
+              "fullname": "Todd Rutledge",
+              "username": "beatriz",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?11"
+            }
+          },
+          {
+            "id": "631501910799bc3f04b2926f",
+            "text": "Nostrud duis incididunt anim ut. Dolor reprehenderit incididunt in labore id laborum aute. Lorem quis et Lorem consectetur duis eu ullamco eiusmod deserunt consectetur adipisicing. Sint ad duis fugiat minim exercitation duis cupidatat velit ea fugiat elit ut. Amet dolore sunt commodo ipsum.",
+            "user": {
+              "fullname": "Ester Hart",
+              "username": "lourdes",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?2"
+            }
+          },
+          {
+            "id": "63150191b644be191368848e",
+            "text": "Laborum anim excepteur veniam nisi fugiat. In ad commodo proident ea anim nostrud magna nulla eiusmod aliqua deserunt. Nostrud fugiat voluptate aliquip do nostrud magna ut et cillum. Amet nostrud nostrud voluptate laborum laboris sint incididunt cupidatat nulla officia qui velit Lorem. Veniam ea sint dolore adipisicing dolore eu voluptate.",
+            "user": {
+              "fullname": "Roy Doyle",
+              "username": "cook",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?2"
+            }
+          },
+          {
+            "id": "63150191f8278376e61bbd8a",
+            "text": "In ad non ad deserunt reprehenderit id voluptate duis esse. Magna aute elit in commodo. In culpa aliquip laborum ex. Culpa aliqua aute dolor dolore esse laboris eiusmod Lorem occaecat nulla. Do et anim et magna nulla.",
+            "user": {
+              "fullname": "Howe Hayes",
+              "username": "jackie",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+            }
+          },
+          {
+            "id": "631501917d5111852a960d99",
+            "text": "Adipisicing Lorem et pariatur eu magna consectetur minim tempor nulla non nostrud et aliqua. Pariatur ipsum nulla in Lorem labore fugiat aute elit. Sunt aute voluptate ea veniam ullamco. Est irure id in culpa. Ad tempor est ex magna est reprehenderit minim veniam voluptate.",
+            "user": {
+              "fullname": "Miller Raymond",
+              "username": "bertha",
+              "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+            }
+          }
+    ], 
+    "themes": [
+        {"name" : "Ukraine"},
+        {"name" : "koronavirus"},
+        {"name" : "football"},
+        {"name" : "React JS"}
+    ],
+    "users": [
+        {
+            "fullname": "Huff Ferrell",
+            "username": "austin",
+            "avatarUrl": "https://source.unsplash.com/random/100x100?2"
+        },
+        {
+            "fullname": "Miller Raymond",
+            "username": "bertha",
+            "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+        },
+        {
+            "fullname": "Howe Hayes",
+            "username": "jackie",
+            "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+        },
+        {
+            "fullname": "Todd Rutledge",
+            "username": "beatriz",
+            "avatarUrl": "https://source.unsplash.com/random/100x100?11"
+        },
+        {
+            "fullname": "Roach Kline",
+            "username": "obrien",
+            "avatarUrl": "https://source.unsplash.com/random/100x100?7"
+        }
+
+    ],  
+    "user": {
+        "fullname": "Nick Name",
+        "username": "Cyberpunk",
+        "avatarUrl": "https://toppng.com/free-image/cool-avatar-transparent-image-cool-boy-avatar-PNG-free-PNG-Images_169876"
+    } 
+}

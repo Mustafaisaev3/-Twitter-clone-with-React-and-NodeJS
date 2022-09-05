@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Tweet from '../components/Tweet'
+import SideMenu from '../components/SideMenu'
+import AddTweetForm from '../components/AddTweetForm'
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchTweets } from '../store/ducks/tweets/action'
+import { selectIsTweetsLoading, selectTweetsItems } from '../store/ducks/tweets/selectors'
+
 
 // Icons
 import {BsSearch} from 'react-icons/bs'
 
 
-
-import Input from '../components/input/Input'
-import Tweet from '../components/Tweet'
-import SideMenu from '../components/SideMenu'
-import Textarea from '../components/Textarea'
-import Button from '../components/Button'
-import AddTweetForm from '../components/AddTweetForm'
-
-
 export const Home = () => {
-    const [activeInput, setActiveInput] = useState(false)
+  const [activeInput, setActiveInput] = useState(false)
+  const dispatch = useDispatch()
+  const tweets = useSelector(selectTweetsItems)
+  const isLoading = useSelector(selectIsTweetsLoading)
+
+  useEffect(() => {
+    dispatch(fetchTweets())
+  }, [dispatch])
   return (
       <div className='flex items-center justify-center'>
           <div className='grid grid-cols-12 gap-2 max-w-7xl'>
@@ -28,7 +35,15 @@ export const Home = () => {
                 <div className='border-b-[10px] w-full h-auto '>
                     <AddTweetForm />
                 </div>
-                <Tweet 
+                {isLoading ? <div>Loading</div> : tweets.map(tweet => (
+                    <Tweet 
+                        key={tweet._id}
+                        text={tweet.text} 
+                        user={tweet.user} 
+                    />
+                ))}
+                
+                {/* <Tweet 
                     text={'React — это JavaScript-библиотека для создания пользовательских интерфейсов. Обратите внимание, что это именно библиотека, а не фреймворк. React часто называют фреймворком, но это ошибка. Во-первых, его использование ни к чему вас не обязывает, не формирует «фрейм» проекта. Во-вторых, React выполняет единственную задачу: показывает на странице компонент интерфейса, синхронизируя его с данными приложения, и только этой библиотеки в общем случае недостаточно для того, чтобы полностью реализовать проект.'} 
                     user={{fullname: 'Max Grid', username: 'gridisius', avatar:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=8'}} 
                 />
@@ -39,11 +54,7 @@ export const Home = () => {
                 <Tweet 
                     text={'React — это JavaScript-библиотека для создания пользовательских интерфейсов. Обратите внимание, что это именно библиотека, а не фреймворк. React часто называют фреймворком, но это ошибка. Во-первых, его использование ни к чему вас не обязывает, не формирует «фрейм» проекта. Во-вторых, React выполняет единственную задачу: показывает на странице компонент интерфейса, синхронизируя его с данными приложения, и только этой библиотеки в общем случае недостаточно для того, чтобы полностью реализовать проект.'} 
                     user={{fullname: 'Max Grid', username: 'gridisius', avatar:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=8'}} 
-                />
-                <Tweet 
-                    text={'React — это JavaScript-библиотека для создания пользовательских интерфейсов. Обратите внимание, что это именно библиотека, а не фреймворк. React часто называют фреймворком, но это ошибка. Во-первых, его использование ни к чему вас не обязывает, не формирует «фрейм» проекта. Во-вторых, React выполняет единственную задачу: показывает на странице компонент интерфейса, синхронизируя его с данными приложения, и только этой библиотеки в общем случае недостаточно для того, чтобы полностью реализовать проект.'} 
-                    user={{fullname: 'Max Grid', username: 'gridisius', avatar:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=8'}} 
-                />
+                /> */}
             </div>
             
 

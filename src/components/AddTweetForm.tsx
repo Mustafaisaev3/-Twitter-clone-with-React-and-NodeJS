@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import Textarea from './Textarea'
+import { useDispatch } from 'react-redux'
 
 // icons
 import {BiImage} from 'react-icons/bi'
 import {MdOutlineTagFaces} from 'react-icons/md'
 import CircularProgressBar from './CircularProgressBar'
+import { TweetsActionsType } from '../store/ducks/tweets/action'
 
 const AddTweetForm = () => {
   let [textareaLength, setTextareaLength] = useState(0)
+
+  const dispatch = useDispatch()
 
   return (
     // <div className='grid grid-cols-12 hover:bg-[#f5f8fa]'>
@@ -33,7 +37,7 @@ const AddTweetForm = () => {
                     :
                     undefined
                     }        
-                    <button className='w-full flex items-center justify-center text-md font-semibold text-white px-4 py-2 rounded-3xl bg-[#1d9bf0]'>
+                    <button onClick={() => dispatch({type: TweetsActionsType.FETCH_TWEETS})} className='w-full flex items-center justify-center text-md font-semibold text-white px-4 py-2 rounded-3xl bg-[#1d9bf0]'>
                         Твитнуть
                     </button>
                 </div>

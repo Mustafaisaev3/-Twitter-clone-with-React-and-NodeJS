@@ -1,13 +1,16 @@
 import React from 'react'
 
 // icons
-import {FaRegUser} from 'react-icons/fa'
 import {TbMessageCircle2, TbRepeat, TbUpload} from 'react-icons/tb'
 import {FaRegHeart} from 'react-icons/fa'
 
 interface TweetType {
     text: string,
-    user: any
+    user: {
+        username: string,
+        fullname: string,
+        avatarUrl: string
+    }
 }
 
 const Tweet = ({text, user}: TweetType): React.ReactElement => {
@@ -16,7 +19,7 @@ const Tweet = ({text, user}: TweetType): React.ReactElement => {
         <div className='border-b-[1px] w-full h-auto grid grid-cols-12 hover:bg-[#f5f8fa]'>
             <div className='col-span-2 flex justify-center p-4'>
                 <div className='w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden'>
-                    <img src={`${user.avatar}`} alt="" />
+                    <img src={`${user.avatarUrl}`} alt="" />
                     {/* <FaRegUser size={30} /> */}
                 </div>
             </div>

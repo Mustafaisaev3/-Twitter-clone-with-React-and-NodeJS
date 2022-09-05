@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 // Pages
 import {SignIn} from './pages/SignIn';
 import {Home} from './pages/Home';
+import {Test} from './pages/Test';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
     <ManagedUIContext>
       <Switch>
         <Route path='/signin' component={SignIn}/>
+        <Route path='/test' component={Test}/>
         <Route path='/' component={Home}/>
       </Switch>
       <ManagedModal />
