@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // icons
 import {TbMessageCircle2, TbRepeat, TbUpload} from 'react-icons/tb'
 import {FaRegHeart} from 'react-icons/fa'
 
 interface TweetType {
+    _id: string,
     text: string,
     user: {
         username: string,
@@ -13,9 +15,9 @@ interface TweetType {
     }
 }
 
-const Tweet = ({text, user}: TweetType): React.ReactElement => {
+const Tweet = ({_id, text, user}: TweetType): React.ReactElement => {
   return (
-    <div>
+    <Link to={`/home/tweet/${_id}`}>
         <div className='border-b-[1px] w-full h-auto grid grid-cols-12 hover:bg-[#f5f8fa]'>
             <div className='col-span-2 flex justify-center p-4'>
                 <div className='w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden'>
@@ -50,7 +52,7 @@ const Tweet = ({text, user}: TweetType): React.ReactElement => {
                 </div>
             </div>
         </div>
-    </div>
+    </Link>
   )
 }
 

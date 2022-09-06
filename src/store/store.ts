@@ -4,6 +4,7 @@ import createSagaMiddleware from '@redux-saga/core'
 
 import { rootSaga } from "./saga"
 import { TweetsState } from "./ducks/tweets/contracts/state"
+import { TagsState } from "./tags/contracts/state"
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -16,7 +17,8 @@ declare global {
 const composeEnhancer = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
 export interface RootState {
-    tweets: TweetsState
+    tweets: TweetsState,
+    tags: TagsState
 }
 
 export const store = createStore(rootReducer, composeEnhancer(applyMiddleware(sagaMiddleware)))

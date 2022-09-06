@@ -11,6 +11,7 @@ import {GrBookmark} from 'react-icons/gr'
 import {RiFileList2Line} from 'react-icons/ri'
 import {FaRegUser} from 'react-icons/fa'
 import {CgMoreO} from 'react-icons/cg'
+import { Link } from 'react-router-dom'
 
 const SideMenu = (): React.ReactElement => {
   const { setModalView, openModal, modalView } = useUI()
@@ -26,10 +27,10 @@ const SideMenu = (): React.ReactElement => {
     <div className='h-auto w-full rounded-lg col-span-2 flex justify-center p-3'>
         <ul className='flex flex-col gap-4'>
             <li>
-                <a href="#" className='flex items-center px-4 py-2'>
+                <Link to={'/home'} className='flex items-center px-4 py-2'>
                     <BsTwitter size={30} color={'#1d9bf0'} />
                     <h2 className='pl-5 text-lg font-semibold sm:hidden'>Hello</h2>
-                </a>
+                </Link>
             </li>
             {/* <li>
                 <a href="#" className='flex items-center px-4 py-2 rounded-3xl hover:bg-[#1da1f21a]'>
