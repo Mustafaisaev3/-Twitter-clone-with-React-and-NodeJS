@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectTagsItems, selectIsTagsLoading } from '../store/tags/selectors'
-import { TagsState } from '../store/tags/contracts/state'
-import { fetchTags } from '../store/tags/action'
+import { selectTagsItems, selectIsTagsLoading } from '../store/ducks/tags/selectors'
+import { TagsState } from '../store/ducks/tags/contracts/state'
+import { fetchTags } from '../store/ducks/tags/action'
 import { Link } from 'react-router-dom'
 
 // interface TagProps {

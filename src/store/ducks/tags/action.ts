@@ -37,7 +37,7 @@ export const setTagsLoadingState = (payload: LoadingState): SetTagsLoadingStateA
 })
 
 export const fetchTags = (): FetchTagsActionInterface => ({
-    type: TagsActionsType.FETCH_TAGS,
+    type: TagsActionsType.FETCH_TAGS
 })
 
 

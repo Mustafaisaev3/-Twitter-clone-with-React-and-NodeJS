@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Route } from 'react-router'
-import Tweet from '../components/Tweet'
-import Tags from '../components/Tags'
-import SideMenu from '../components/SideMenu'
-import AddTweetForm from '../components/AddTweetForm'
+import Tweet from '../../components/Tweet'
+import Tags from '../../components/Tags'
+import SideMenu from '../../components/SideMenu'
+import AddTweetForm from '../../components/AddTweetForm'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchTweets } from '../store/ducks/tweets/action'
-import { selectIsTweetsLoading, selectTweetsItems } from '../store/ducks/tweets/selectors'
+import { fetchTweets } from '../../store/ducks/tweets/action'
+import { selectIsTweetsLoading, selectTweetsItems } from '../../store/ducks/tweets/selectors'
 
 
 // Icons
 import {BsSearch} from 'react-icons/bs'
 import {BiLeftArrowAlt} from 'react-icons/bi'
+import BackButton from '../../components/BackButton'
+import FullTweet from './components/FullTweet'
 
 
 
@@ -37,7 +39,7 @@ export const Home = () => {
             <div className='border-x-[1px] h-auto w-full col-span-10 md:col-span-10 lg:col-span-7'>
                 <div className='flex w-full h-auto px-[10px] py-[10px] border-b-[1px]'>
                     <Route path={'/home/:any'} >
-                        <BiLeftArrowAlt size={30} />
+                        <BackButton />
                     </Route>
                     <Route path={[`/home`, `/home/search`]} exact>
                         <h3 className='font-bold text-lg'>Твиты</h3>
@@ -61,6 +63,9 @@ export const Home = () => {
                             user={tweet.user} 
                         />
                     ))}
+                </Route>
+                <Route path={'/home/tweet/:id'} component={FullTweet} exact>
+
                 </Route>
             </div>
             

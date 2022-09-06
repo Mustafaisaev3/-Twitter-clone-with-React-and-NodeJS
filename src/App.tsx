@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // Pages
 import {SignIn} from './pages/SignIn';
-import {Home} from './pages/Home';
+import {Home} from './pages/Home/Home';
 import {Test} from './pages/Test';
 
 function App() {
