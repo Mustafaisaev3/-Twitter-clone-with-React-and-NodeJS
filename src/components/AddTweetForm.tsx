@@ -1,18 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Textarea from './Textarea'
 import { useDispatch } from 'react-redux'
+import { FetchAddTweet, TweetsActionsType } from '../store/ducks/tweets/action'
+import { useSelector } from 'react-redux'
+import { selectAddFormState } from '../store/ducks/tweets/selectors'
 
 // icons
 import {BiImage} from 'react-icons/bi'
 import {MdOutlineTagFaces} from 'react-icons/md'
 import CircularProgressBar from './CircularProgressBar'
-import { TweetsActionsType } from '../store/ducks/tweets/action'
+
+
 
 const AddTweetForm = () => {
-  let [textareaLength, setTextareaLength] = useState(0)
+    const [textareaLength, setTextareaLength] = useState<number>(0)
+    const [text, setText] = useState('')
+    const [visibleNotification, setVisibleNotification] = useState<boolean>(false)
+    const dispatch = useDispatch()
 
-  const dispatch = useDispatch()
+    const addFormState = useSelector(selectAddFormState)
 
+    useEffect(() => {
+
+    }, [addFormState])
+
+    const handleCloseNotification = () => {
+        setVisibleNotification(false)
+    }
+
+    const handleClickAddTweet = () => {
+        dispatch(FetchAddTweet(text))
+        setText('')
+    }
   return (
     // <div className='grid grid-cols-12 hover:bg-[#f5f8fa]'>
     <div className='grid grid-cols-12'>
@@ -22,7 +41,7 @@ const AddTweetForm = () => {
             </div>
         </div>
         <div className='col-span-10 py-4 pr-2'>
-            <Textarea placeholder='Что происходит?' getTextareaLength={setTextareaLength} maxLength={281} />
+            <Textarea setText={setText} text={text} placeholder='Что происходит?' getTextareaLength={setTextareaLength} maxLength={281} />
             <div className='flex justify-between items-center'>
                 <div className='flex items-center'>
                     <BiImage size={25} color={'#1d9bf0'} />
@@ -37,7 +56,7 @@ const AddTweetForm = () => {
                     :
                     undefined
                     }        
-                    <button onClick={() => dispatch({type: TweetsActionsType.FETCH_TWEETS})} className='w-full flex items-center justify-center text-md font-semibold text-white px-4 py-2 rounded-3xl bg-[#1d9bf0]'>
+                    <button onClick={handleClickAddTweet} className='w-full flex items-center justify-center text-md font-semibold text-white px-4 py-2 rounded-3xl bg-[#1d9bf0] disabled:opacity-40' disabled={!text || text.length == 0 ? true : undefined} >
                         Твитнуть
                     </button>
                 </div>

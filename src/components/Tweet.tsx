@@ -18,6 +18,7 @@ interface TweetType {
 const Tweet = ({_id, text, user}: TweetType): React.ReactElement => {
   return (
     <Link to={`/home/tweet/${_id}`}>
+        {/* <Snackbar type={'succes'} /> */}
         <div className='border-b-[1px] w-full h-auto grid grid-cols-12 hover:bg-[#f5f8fa]'>
             <div className='col-span-2 flex justify-center p-4'>
                 <div className='w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden'>

@@ -2,12 +2,23 @@ import React, {createContext, useReducer, useMemo, useContext} from "react";
 
 export interface State {
   displayModal: boolean,
-  modalView: string
+  modalView: string,
+  displayToast: boolean,
+  toastList: ToastType[],
 }
 
 const initialState: State = {
   displayModal: false,
-  modalView: 'SIGN_IN_VIEW'
+  modalView: 'SIGN_IN_VIEW',
+  displayToast: false,
+  toastList: [],
+
+}
+
+export type ToastType = {
+  id: number,
+  toastType: string,
+  text: string
 }
 
 
@@ -32,6 +43,24 @@ type Action =
       type: 'SET_MODAL_VIEW',
       view: MODAL_VIEWS
     }
+  | 
+    {
+      type: 'OPEN_TOAST'
+    } 
+  | 
+    {
+      type: 'CLOSE_TOAST'
+    } 
+  | 
+    {
+      type: 'ADD_TOAST',
+      toast: ToastType
+    } 
+  | 
+    {
+      type: 'DELETE_TOAST',
+      id: number
+    } 
 
 export const UIContext = createContext<State | any>(initialState);
 UIContext.displayName = "UIContext";
@@ -53,6 +82,33 @@ const UIReducer = (state: State, action: Action) => {
         ...state,
         modalView: action.view
       }
+    case 'OPEN_TOAST':
+      return {
+        ...state,
+        displayToast: true
+      }
+    case 'CLOSE_TOAST':
+      return {
+        ...state,
+        displayToast: false
+      }
+    case 'ADD_TOAST':
+      const toast = action.toast
+      let newToastLiast: ToastType[] = []
+      newToastLiast.unshift(toast)
+
+      return {
+        ...state,
+        toastList: [...state.toastList, ...newToastLiast]
+      }
+    case 'DELETE_TOAST':
+      let newToastList = state.toastList.filter((e) => {
+        return action.id !== e.id 
+      })
+      return {
+        ...state,
+        toastList: [...newToastList]
+      }
   }
 }
 
@@ -63,6 +119,10 @@ export const UIProvider = (props: any) => {
   const closeModal = () => dispatch({type: 'CLOSE_MODAL'})
   const openModal = () => dispatch({type: 'OPEN_MODAL'})
   const setModalView = (view: MODAL_VIEWS) => dispatch({type: 'SET_MODAL_VIEW', view})
+  const openToast = () => dispatch({type: 'OPEN_TOAST'})
+  const closeToast = () => dispatch({type: 'CLOSE_TOAST'})
+  const addToast = (toast: ToastType) => dispatch({type: 'ADD_TOAST', toast})
+  const deleteToast = (id: number) => dispatch({type: 'DELETE_TOAST', id})
 
   const value = useMemo(
     () => ({
@@ -70,6 +130,10 @@ export const UIProvider = (props: any) => {
       openModal,
       closeModal,
       setModalView,
+      openToast,
+      closeToast,
+      addToast,
+      deleteToast
     }),
     [state]
   );

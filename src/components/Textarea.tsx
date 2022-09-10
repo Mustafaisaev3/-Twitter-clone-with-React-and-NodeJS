@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
 const Textarea = (props: any) => {
-  const [text, setText] = useState<string>('')
+  const {text, setText} = props
+  // const [text, setText] = useState<string>('')
   
   const handleChangeTextarea = (e: React.FormEvent<HTMLTextAreaElement>) => {
     if(e.currentTarget){
