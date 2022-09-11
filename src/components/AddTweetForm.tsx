@@ -9,10 +9,13 @@ import { selectAddFormState } from '../store/ducks/tweets/selectors'
 import {BiImage} from 'react-icons/bi'
 import {MdOutlineTagFaces} from 'react-icons/md'
 import CircularProgressBar from './CircularProgressBar'
+import { useUI } from '../context/ui.context'
+import { AddFormState } from '../store/ducks/tweets/contracts/state'
 
 
 
 const AddTweetForm = () => {
+    const {addToast} = useUI()
     const [textareaLength, setTextareaLength] = useState<number>(0)
     const [text, setText] = useState('')
     const [visibleNotification, setVisibleNotification] = useState<boolean>(false)
@@ -21,7 +24,9 @@ const AddTweetForm = () => {
     const addFormState = useSelector(selectAddFormState)
 
     useEffect(() => {
-
+        if(addFormState === AddFormState.ERROR){
+            addToast({id: Math.random(), toastType: 'error', text: 'Error: твит не добавился ):'})
+        }
     }, [addFormState])
 
     const handleCloseNotification = () => {

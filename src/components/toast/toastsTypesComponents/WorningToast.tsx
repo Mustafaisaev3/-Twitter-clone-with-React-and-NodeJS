@@ -8,7 +8,7 @@ type WorningToastType = {
   
   const WorningToast = ({id, text}: WorningToastType) => {
     return (
-      <div className={`p-[20px] w-[200px] mb-5 rounded-lg  text-white bg-yellow-500 flex items-center justify-between`} key={id}>
+      <div className={`p-[20px] w-[300px] text-sm mb-5 rounded-lg  text-white bg-yellow-500 flex items-center justify-between`} key={id}>
         <div>{text}</div>
         <div><RiErrorWarningLine /></div>
       </div>

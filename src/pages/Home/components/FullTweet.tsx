@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import { FaRegHeart } from 'react-icons/fa'
+import { TbMessageCircle2, TbRepeat, TbUpload } from 'react-icons/tb'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
@@ -25,9 +27,41 @@ const FullTweet: React.FC = (): React.ReactElement | null => {
     }
 
     return (
-    <div>
-        <Tweet _id={tweetData?._id} user={tweetData?.user} text={tweetData?.text}/>
-    </div>
+        <div className='border-b-[1px] w-full h-auto hover:bg-[#f5f8fa]  p-4'>
+            <div className='w-full flex items-center'>
+                <div className='w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden'>
+                    <img src={`${tweetData.user.avatarUrl}`} alt="" />
+                    {/* <FaRegUser size={30} /> */}
+                </div>
+                <div className='pl-4'>
+                    <div className='font-bold'>{tweetData.user.fullname}</div>
+                    <div className='text-[#c3c3c3]'>@{tweetData.user.username}</div>
+                </div>
+            </div>
+            <div className='w-full '>
+                <div>
+                    <p className='pt-4 text-2xl'>{tweetData.text}</p>
+                </div>
+                <div className='flex justify-between pt-4'>
+                    <div className='w-full flex items-center'>
+                        <TbMessageCircle2 size={25} />
+                        <span className='pl-3'>1</span>
+                    </div>
+                    <div className='w-full flex items-center'>
+                        <FaRegHeart size={25} />
+                        <span className='pl-3'>1</span>
+                    </div>
+                    <div className='w-full flex items-center'>
+                        <TbRepeat size={25} />
+                        <span className='pl-3'>1</span>
+                    </div>
+                    <div className='w-full flex items-center'>
+                        <TbUpload size={25} />
+                        <span className='pl-3'>1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

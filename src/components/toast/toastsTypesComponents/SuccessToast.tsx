@@ -8,7 +8,7 @@ type SuccesToastType = {
 
 const SuccesToast = ({id, text}: SuccesToastType) => {
   return (
-      <div className={`p-[15px] w-[200px] mb-5 rounded-lg  text-white bg-green-500 flex items-center justify-between`} key={id}>
+      <div className={`p-[15px] w-[300px] text-sm mb-5 rounded-lg  text-white bg-green-500 flex items-center justify-between`} key={id}>
         <div>{text}</div>
         <div><BsCheckCircle /></div>
       </div>
