@@ -1,6 +1,6 @@
 import {takeEvery, call, put} from '@redux-saga/core/effects'
 import { TagsApi } from '../../../services/api/tagsApi'
-import { FetchTagsActionInterface, setTags, setTagsLoadingState, TagsActionsType } from './action'
+import { setTags, setTagsLoadingState, TagsActionsType } from './action'
 import { LoadingState } from './contracts/state'
 
 

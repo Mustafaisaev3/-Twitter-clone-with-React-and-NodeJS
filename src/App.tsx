@@ -7,7 +7,6 @@ import { Switch, Route } from 'react-router-dom';
 // Pages
 import {SignIn} from './pages/SignIn';
 import {Home} from './pages/Home/Home';
-import {Test} from './pages/Test';
 import ToastList from './components/toast/ToastList';
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
     <ManagedUIContext>
       <Switch>
         <Route path='/signin' component={SignIn}/>
-        <Route path='/test' component={Test}/>
         <Route path='/' component={Home}/>
       </Switch>
       <ManagedModal />

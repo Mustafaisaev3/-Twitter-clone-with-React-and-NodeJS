@@ -1,4 +1,4 @@
-import { LoadingState, Tweet } from "../tweets/contracts/state"
+import { LoadingState } from "../tweets/contracts/state"
 import { FetchTweetDataActionInterface, SetTweetDataActionInterface, SetTweetLoadingStateActionInterface, TweetActionsType } from "./contracts/actionType"
 import { TweetState } from "./contracts/state"
 

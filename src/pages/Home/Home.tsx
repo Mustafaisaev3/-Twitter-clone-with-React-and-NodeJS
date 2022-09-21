@@ -13,7 +13,6 @@ import { selectIsTweetsLoading, selectTweetsItems } from '../../store/ducks/twee
 
 // Icons
 import {BsSearch} from 'react-icons/bs'
-import {BiLeftArrowAlt} from 'react-icons/bi'
 import BackButton from '../../components/BackButton'
 import FullTweet from './components/FullTweet'
 
@@ -25,7 +24,8 @@ export const Home = () => {
   const dispatch = useDispatch()
   const tweets = useSelector(selectTweetsItems)
   const isLoading = useSelector(selectIsTweetsLoading)
-
+  
+  console.log(tweets, 'hello tweets')
 
   useEffect(() => {
     dispatch(fetchTweets())
@@ -49,6 +49,7 @@ export const Home = () => {
                     </Route>
                 </div>
 
+
                 <Route path={[`/home`, `/home/search`]} exact>
                     <div className='border-b-[10px] w-full h-auto '>
                         <AddTweetForm />
@@ -60,6 +61,7 @@ export const Home = () => {
                             _id={tweet._id}
                             key={tweet._id}
                             text={tweet.text} 
+                            createdAt={tweet.createdAt}
                             user={tweet.user} 
                         />
                     ))}
