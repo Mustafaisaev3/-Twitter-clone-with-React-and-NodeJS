@@ -11,10 +11,8 @@ export default function useOnClickOutside<T extends HTMLElement = HTMLElement>(
       const listener = (event: Event) => {
         const el = ref?.current
         if (!el || el.contains((event?.target as Node) || null)) {
-          console.log('click')
           return
         }
-        console.log('click2')
         handler(event);
       };
       document.addEventListener('mousedown', listener);

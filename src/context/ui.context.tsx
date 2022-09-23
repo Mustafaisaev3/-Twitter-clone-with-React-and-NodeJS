@@ -24,6 +24,7 @@ export type ToastType = {
 
 type MODAL_VIEWS =
   | "SIGN_IN_VIEW"
+  | "SIGN_UP_VIEW"
   | "LOGIN_VIEW"
   | "FORGET_PASSWORD"
   | "ADD_TWEET_MODAL"

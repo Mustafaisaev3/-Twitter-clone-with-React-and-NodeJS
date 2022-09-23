@@ -1,6 +1,7 @@
 import { Action } from "redux";
+import { LoadingState } from "../../types";
 // import { LoadingState, TagsState } from "./contracts/state";
-import { LoadingState, TagsState } from "./contracts/state";
+import { TagsState } from "./contracts/state";
 
 export enum TagsActionsType {
     SET_TAGS = 'tags/SET_TAGS',

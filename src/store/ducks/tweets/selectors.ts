@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
 import { RootState } from "../../store";
-import { AddFormState, LoadingState, TweetsState } from "./contracts/state";
+import { LoadingState } from "../../types";
+import { AddFormState, TweetsState } from "./contracts/state";
 
 export const selectTweets = (state: RootState): TweetsState => state.tweets 
 

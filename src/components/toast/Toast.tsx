@@ -4,7 +4,13 @@ import ErrorToast from './toastsTypesComponents/ErrorToast'
 import SuccesToast from './toastsTypesComponents/SuccessToast'
 import WorningToast from './toastsTypesComponents/WorningToast'
 
-const Toast = ({id, toastType, text}: any) => {
+interface ToastType {
+  id: any,
+  toastType: string,
+  text: string
+}
+
+const Toast = ({id, toastType, text}: ToastType) => {
   const {deleteToast, toastList} = useUI()
 
   useEffect(() => {

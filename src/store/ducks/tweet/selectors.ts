@@ -1,6 +1,7 @@
 import { RootState } from "../../store";
+import { LoadingState } from "../../types";
 import { Tweet } from "../tweets/contracts/state";
-import { LoadingState, TweetState } from "./contracts/state";
+import { TweetState } from "./contracts/state";
 
 export const selectTweet = (state: RootState): TweetState => state.tweet
 

@@ -1,11 +1,25 @@
 import React from 'react'
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 import { useUI } from '../../context/ui.context'
-import { BsTwitter } from 'react-icons/bs'
 import Input from '../input/Input'
 
+import { BsTwitter } from 'react-icons/bs'
+
+const UserFormSchema = yup.object({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).required(),
+}).required();
 
 const SignInModal = () => {
-    const {closeModal} = useUI()
+  const {closeModal} = useUI()
+  
+  // const { register, handleSubmit, formState: { errors } } = useForm({
+  //   resolver: yupResolver(UserFormSchema)
+  // });
+  // const onSubmit = (data) => console.log(data);
+
   return (
     <div className='relative w-[500px] h-[600px] rounded-lg bg-white p-4'>
       <div className='w-full flex justify-center pb-6'>

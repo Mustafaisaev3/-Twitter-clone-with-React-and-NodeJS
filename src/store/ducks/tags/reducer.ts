@@ -1,6 +1,7 @@
 import produce, {Draft} from "immer"
+import { LoadingState } from "../../types"
 import { TagsActions, TagsActionsType } from "./action"
-import { LoadingState, TagsState } from "./contracts/state"
+import { TagsState } from "./contracts/state"
 
 const initialTagsState: TagsState = {
     items: [],

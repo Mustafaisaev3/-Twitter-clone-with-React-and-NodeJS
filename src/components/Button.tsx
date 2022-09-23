@@ -2,7 +2,7 @@ import React from 'react'
 
 interface ButtonType {
     children?: any,
-    onClick: () => void,
+    onClick?: () => void,
     type?: any,
     buttonStyle?: string,
     buttonSize?: string,
@@ -10,7 +10,7 @@ interface ButtonType {
 
 const Button = ({children, onClick, type, buttonStyle, buttonSize, ...rest}: ButtonType) => {
   return (
-    <button onClick={() => onClick()} type={type} {...rest} className={`btn ${buttonStyle} mb-[10px] w-full cursor-pointer`}>
+    <button onClick={onClick} type={type} {...rest} className={`btn ${buttonStyle} mb-[10px] w-full cursor-pointer`}>
         {children}
     </button>
   )

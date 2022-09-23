@@ -1,7 +1,8 @@
 import produce, {Draft} from "immer"
 import { TweetActionsType } from "./contracts/actionType"
 import { TweetActions } from "./action"
-import { LoadingState, TweetState } from "./contracts/state"
+import { TweetState } from "./contracts/state"
+import { LoadingState } from "../../types"
 
 const initialTweetState: TweetState = {
     data: undefined,

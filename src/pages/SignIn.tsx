@@ -13,6 +13,10 @@ export const SignIn = () => {
     setModalView('SIGN_IN_VIEW')
     return openModal()
   }
+  const handleSignUnModal = () => {
+    setModalView('SIGN_UP_VIEW')
+    return openModal()
+  }
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -47,7 +51,7 @@ export const SignIn = () => {
             <div className='flex flex-col w-full'>
                 <div className='text-sm font-medium pb-[20px]'>Присоединяйтесь к твиттеру прямо сейчас</div>
                 <Button onClick={handleSignInModal} buttonStyle='primary'>Зарегистрироваться</Button>
-                <Button onClick={handleSignInModal} buttonStyle='secondary'>Войти</Button>
+                <Button onClick={handleSignUnModal} buttonStyle='secondary'>Войти</Button>
             </div>
           </div>
       </div>

@@ -13,9 +13,10 @@ const ManagedModal: React.FC = () => {
 		// 	{/* <SignInModal /> */}
 		// </Modal>
 
-        <Toast>
+        // <Toast>
 
-        </Toast>
+        // </Toast>
+		<div></div>
 	);
 };
 

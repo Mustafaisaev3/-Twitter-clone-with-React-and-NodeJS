@@ -3,9 +3,10 @@ import { TweetsApi } from '../../../services/api/tweetsApi'
 import { setTweetData} from './action'
 import { TweetActionsType } from './contracts/actionType'
 import { setTweetDataLoadingState } from './action'
-import { LoadingState } from './contracts/state'
 import { FetchTweetDataActionInterface } from './contracts/actionType'
 import { Tweet } from '../tweets/contracts/state'
+import { LoadingState } from '../../types'
+
 
 
 export function* fetchTweetDataRequest ({payload: tweetId}: FetchTweetDataActionInterface) {
