@@ -1,7 +1,8 @@
 import { Action } from "redux";
+import { RegisterFormProps } from "../../../components/signin/SignInModal";
 import { LoginFormProps } from "../../../components/signin/SingUpModal";
 import { LoadingState } from "../../types";
-import { SetUserDateActionInterface, SetUserLoadingStateActionInterface, FetchSignInActionInterface, UserActionsType } from "./contracts/actionType";
+import { SetUserDateActionInterface, SetUserLoadingStateActionInterface, FetchSignInActionInterface, UserActionsType, FetchSignUpActionInterface } from "./contracts/actionType";
 import { UserState } from "./contracts/state";
 
 
@@ -12,6 +13,11 @@ export const setUserData = (payload: UserState['data']): SetUserDateActionInterf
 
 export const fetchSignIn = (payload: LoginFormProps): FetchSignInActionInterface => ({
     type: UserActionsType.FETCH_SIGN_IN,
+    payload,
+})
+
+export const fetchSignUp = (payload: RegisterFormProps): FetchSignUpActionInterface => ({
+    type: UserActionsType.FETCH_SIGN_UP,
     payload,
 })
 

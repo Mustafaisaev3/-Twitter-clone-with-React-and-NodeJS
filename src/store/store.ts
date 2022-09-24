@@ -6,6 +6,7 @@ import { rootSaga } from "./saga"
 import { TweetsState } from "./ducks/tweets/contracts/state"
 import { TagsState } from "./ducks/tags/contracts/state"
 import { UserState } from "./ducks/user/contracts/state"
+import { UsersState } from "./ducks/users/contracts/state"
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -21,7 +22,8 @@ export interface RootState {
     tweets: TweetsState,
     tags: TagsState,
     tweet: TweetsState,
-    user: UserState
+    user: UserState,
+    users: UsersState
 }
 
 export const store = createStore(rootReducer, composeEnhancer(applyMiddleware(sagaMiddleware)))

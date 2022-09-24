@@ -15,6 +15,7 @@ import { selectIsTweetsLoading, selectTweetsItems } from '../../store/ducks/twee
 import {BsSearch} from 'react-icons/bs'
 import BackButton from '../../components/BackButton'
 import FullTweet from './components/FullTweet'
+import Users from '../../components/Users'
 
 
 
@@ -79,13 +80,7 @@ export const Home = () => {
                     <input className='w-full h-full bg-inherit outline-none pl-3' placeholder='Поиск по Твиттеру' onBlur={() => setActiveInput(false)} onFocus={() => setActiveInput(true)}/>
                 </div>
                 <Tags />
-                <div className='w-full h-auto mt-5 bg-[#f2f1f1dc] rounded-lg overflow-hidden'>
-                    <div className='text-lg font-bold py-3 px-4 border-b-[1px] '>Кого читать</div>
-                    <div className='text-md font-medium p-2 px-4 border-b-[1px]'>
-                        Киев
-                        <span className='block text-sm font-normal text-[#c3c3c3]'>Твитов: 2500</span>
-                    </div>
-                </div>
+                <Users />
             </div>
         </div>
       </div>

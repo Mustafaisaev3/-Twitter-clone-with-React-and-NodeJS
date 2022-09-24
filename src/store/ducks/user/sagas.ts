@@ -2,7 +2,7 @@ import {takeEvery, call, put} from '@redux-saga/core/effects'
 import { AuthApi, AuthResponceApi} from '../../../services/api/authApi'
 import { LoadingState } from '../../types'
 import { setUserData, setUserDataLoadingState } from './action'
-import { FetchSignInActionInterface, SetUserDateActionInterface, UserActionsType } from './contracts/actionType'
+import { FetchSignInActionInterface, FetchSignUpActionInterface, SetUserDateActionInterface, UserActionsType } from './contracts/actionType'
 import { User } from './contracts/state'
 
 
@@ -16,7 +16,19 @@ export function* fetchSignInRequest ({ payload }: FetchSignInActionInterface ){
     }
 }
 
+export function* fetchSignUpRequest ({ payload }: FetchSignUpActionInterface ){
+    try {
+        console.log('register saga')
+        yield put(setUserDataLoadingState(LoadingState.LOADING))
+        yield call(AuthApi.signUp, payload)
+        yield put(setUserDataLoadingState(LoadingState.SUCCESS))
+    } catch (error) {
+        yield put(setUserDataLoadingState(LoadingState.ERROR))
+    }
+}
+
 
 export function* userSaga () {
     yield takeEvery(UserActionsType.FETCH_SIGN_IN, fetchSignInRequest)
+    yield takeEvery(UserActionsType.FETCH_SIGN_UP, fetchSignUpRequest)
 }

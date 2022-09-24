@@ -21,7 +21,7 @@ const Input = forwardRef((props: InputType, ref: any) => {
             <input {...rest} className={`w-full bg-slate-100 focus:outline-none mt-1 ${inputClasses}`} maxLength={50} type="text" name={name} placeholder={placeholder} onChange={(e) => setInputValue(e.target.value)} value={inputValue} ref={ref}/>
         </div>
         {/* <div className='w-full text-right'>{inputValue?.length ? inputValue?.length : 0} / 50</div> */}
-        <div className='text-[#ff481a]'>{erorr}</div>
+        <div className='text-[#ff481a] text-sm pt-1'>{erorr}</div>
     </div>
   )
 })
