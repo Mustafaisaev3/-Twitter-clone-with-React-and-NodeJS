@@ -13,4 +13,6 @@ export const selectUserStatus = (state: RootState): UserState['status'] => selec
 
 export const selectUserIsLoading = (state: RootState): boolean => selectUserState(state).status === LoadingState.LOADING
 
+export const selectUserIsLoaded = (state: RootState): boolean => selectUserState(state).status === LoadingState.LOADED
+
 

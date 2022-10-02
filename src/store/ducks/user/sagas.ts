@@ -8,8 +8,19 @@ import { User } from './contracts/state'
 
 export function* fetchSignInRequest ({ payload }: FetchSignInActionInterface ){
     try {
+        yield put(setUserDataLoadingState(LoadingState.LOADING))
         const {data} = yield call(AuthApi.signIn, payload)
         yield window.localStorage.setItem('token', data.token)
+        yield put(setUserData(data))
+    } catch (error) {
+        yield put(setUserDataLoadingState(LoadingState.ERROR))
+    }
+}
+
+export function* fetchUserDataRequest (){
+    try {
+        yield put(setUserDataLoadingState(LoadingState.LOADING))
+        const {data} = yield call(AuthApi.getMe)
         yield put(setUserData(data))
     } catch (error) {
         yield put(setUserDataLoadingState(LoadingState.ERROR))
@@ -31,4 +42,5 @@ export function* fetchSignUpRequest ({ payload }: FetchSignUpActionInterface ){
 export function* userSaga () {
     yield takeEvery(UserActionsType.FETCH_SIGN_IN, fetchSignInRequest)
     yield takeEvery(UserActionsType.FETCH_SIGN_UP, fetchSignUpRequest)
+    yield takeEvery(UserActionsType.FETCH_USER_DATA, fetchUserDataRequest)
 }

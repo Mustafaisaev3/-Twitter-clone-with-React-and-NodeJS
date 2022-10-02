@@ -11,6 +11,7 @@ import {MdOutlineTagFaces} from 'react-icons/md'
 import CircularProgressBar from './CircularProgressBar'
 import { useUI } from '../context/ui.context'
 import { AddFormState } from '../store/ducks/tweets/contracts/state'
+import UploadImages from './UploadImages'
 
 
 
@@ -49,8 +50,9 @@ const AddTweetForm = () => {
             <Textarea setText={setText} text={text} placeholder='Что происходит?' getTextareaLength={setTextareaLength} maxLength={281} />
             <div className='flex justify-between items-center'>
                 <div className='flex items-center'>
-                    <BiImage size={25} color={'#1d9bf0'} />
-                    <MdOutlineTagFaces size={25} color={'#1d9bf0'}/>
+                    <UploadImages />
+                    {/* <BiImage size={25} color={'#1d9bf0'} /> */}
+                    {/* <MdOutlineTagFaces size={25} color={'#1d9bf0'}/> */}
                 </div>
                 <div className='flex items-center'>
                     {textareaLength

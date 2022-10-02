@@ -12,39 +12,46 @@ import { useDispatch } from 'react-redux';
 import { AuthApi } from './services/api/authApi';
 import { setUserData } from './store/ducks/user/action';
 import { useSelector } from 'react-redux';
-import { selectIsAuth } from './store/ducks/user/selectors';
+import { selectIsAuth, selectUserStatus } from './store/ducks/user/selectors';
+import { LoadingState } from './store/types';
 
 function App() {
   const dispatch = useDispatch()
   const history = useHistory()
 
   const isAuth = useSelector(selectIsAuth)
+  const loadingStatus = useSelector(selectUserStatus)
+  const isReady = loadingStatus !== LoadingState.NEVER && loadingStatus !== LoadingState.LOADED
 
   const checkAuth = async () => {
     try {
       const {data} = await AuthApi.getMe()
       dispatch(setUserData(data)) 
     } catch (error) {
-      
+      console.log(error)
     }
   }
 
   useEffect(() => {
-    if(isAuth){
-      // history.push('/home')
-    }
-  }, [isAuth])
-
-  useEffect(() => {
     checkAuth()
   }, [])
+
+  useEffect(() => {
+    if(!isAuth && isReady){
+      history.push('/signin')
+    } else {
+      history.push('/home')
+    }
+  }, [isAuth, isReady])
+
+
 
   return (
     <>
     <ManagedUIContext>
       <Switch>
         <Route path='/signin' component={SignIn}/>
-        <Route path='/' component={Home}/>
+        <Route path='/home' component={Home}/>
       </Switch>
       <ManagedModal />
       <ToastList />
