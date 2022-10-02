@@ -15,8 +15,9 @@ export const TweetsApi = {
         const { data } = await axios.get<Responce<Tweet>>('/tweets/' + id);
         return data.data;
     },  
-    async addTweet (payload: string): Promise<Tweet> {
-        const { data } = await axios.post<Responce<Tweet>>('/tweets', {text: payload});
+    async addTweet (payload:  {text: string, images: string[]}): Promise<Tweet> {
+        const { data } = await axios.post<Responce<Tweet>>('/tweets', payload);
         return data.data;
     },  
+    removeTweet: (id: string): Promise<any> => axios.delete('/tweets/' + id)
 }

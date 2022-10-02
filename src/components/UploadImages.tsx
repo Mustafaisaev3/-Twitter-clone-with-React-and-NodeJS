@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import { BsImage } from 'react-icons/bs'
 import { IoIosClose } from 'react-icons/io'
+import { ImageObj } from './AddTweetForm'
 
-const UploadImages = () => {
+interface UploadImageInterface {
+    images: ImageObj[],
+    setImages: (callback: (prev: ImageObj[]) => ImageObj[]) => void
+}
 
-  const [ images, setImages ] = useState<string[]>([])
+const UploadImages = ({images, setImages}: UploadImageInterface) => {
+
+//   const [ images, setImages ] = useState<string[]>([])
 
   const handleImageDeleteBtn = (url: string) => {
-    setImages(prev => prev.filter(_url => _url !== url))
+    setImages(prev => prev.filter(obj => obj.blobUrl !== url))
   }
 
   const handleChoseImageButton = (e: any) => {
@@ -15,19 +21,20 @@ const UploadImages = () => {
     console.log(file)
     if(file) {
         const fileObj = new Blob([file])
-        setImages(prev => [...prev, URL.createObjectURL(fileObj)])
+        setImages(prev => [...prev, {
+            blobUrl: URL.createObjectURL(fileObj),
+            file
+        }])
     }
   }
-
-  console.log('rerender')
 
   return (
     <div className=''>
         <div className='flex gap-2 py-2'> 
-            {images.map((i) => {
-                return  <div key={i} className='w-[50px] h-[50px] rounded-md relative'>
-                            <img src={i} alt={'image'} className='w-full h-full' />
-                            <div className='absolute top-[-5px] right-[-5px] bg-[#ff4b4b] rounded-full cursor-pointer' onClick={() => handleImageDeleteBtn(i)}>
+            {images.map((obj) => {
+                return  <div key={obj.blobUrl} className='w-[50px] h-[50px] rounded-md relative'>
+                            <img src={obj.blobUrl} alt={'image'} className='w-full h-full' />
+                            <div className='absolute top-[-5px] right-[-5px] bg-[#ff4b4b] rounded-full cursor-pointer' onClick={() => handleImageDeleteBtn(obj.blobUrl)}>
                                 <IoIosClose size={15} color={'white'}/>
                             </div>
                         </div>

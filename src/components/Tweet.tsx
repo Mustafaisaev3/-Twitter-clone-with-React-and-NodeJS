@@ -1,13 +1,19 @@
 import React, { MouseEventHandler, useRef, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import { useUI } from '../context/ui.context';
 import { Link } from 'react-router-dom'
+
+import { formatDate } from '../utils/formatDate'
+import TweetItemDropdown from './TweetItemDropdown';
+import { RemoveTweet } from '../store/ducks/tweets/action';
 
 // icons
 import {TbMessageCircle2, TbRepeat, TbUpload} from 'react-icons/tb'
 import {FaRegHeart, FaRegUser} from 'react-icons/fa'
 import {BsThreeDotsVertical} from 'react-icons/bs'
-import { formatDate } from '../utils/formatDate'
-import TweetItemDropdown from './TweetItemDropdown';
+
+
 
 interface TweetType {
     _id: string,
@@ -17,13 +23,22 @@ interface TweetType {
         username: string,
         fullname: string,
         avatarUrl: string
-    }
+    },
+    images?: string[]
 }
 
 
 
-const Tweet = ({_id, text, createdAt, user}: TweetType): React.ReactElement => {
+const Tweet = ({_id, text, createdAt, user, images}: TweetType): React.ReactElement => {
+  const {addToast} = useUI()
   const history = useHistory()
+  const dispatch = useDispatch()
+
+  const handleDeliteClick = () => {
+    dispatch(RemoveTweet(_id))
+    addToast({id: Math.random(), toastType: 'success', text: 'Твит удалён!'})
+
+  }
 
   return (
     <Link to={`/home/tweet/${_id}`}>
@@ -46,6 +61,15 @@ const Tweet = ({_id, text, createdAt, user}: TweetType): React.ReactElement => {
                         </div>
                         <p className='pt-3'>{text}</p>
                     </div>
+                    {images && <div className='flex gap-2 py-2'> 
+                        {images.map((url) => {
+                                return  <div key={url} className='w-[50px] h-[50px] rounded-md relative'>
+                                            <img src={url} alt={'image'} className='w-full h-full' />
+                                        </div>     
+                        })}
+                    </div> 
+                    }
+                    
                     <div className='flex justify-between pt-4'>
                         <div className='w-full flex items-center'>
                             <TbMessageCircle2 size={25} />
@@ -79,7 +103,7 @@ const Tweet = ({_id, text, createdAt, user}: TweetType): React.ReactElement => {
             <div className='m-[10px]'>
                 <TweetItemDropdown>
                     <div className='p-2 hover:hover:bg-[#f5f8fa]'>Редактировать</div>
-                    <div className='p-2 hover:hover:bg-[#f5f8fa]'>Удалить</div>
+                    <div className='p-2 hover:hover:bg-[#f5f8fa]' onClick={handleDeliteClick}>Удалить</div>
                 </TweetItemDropdown>
             </div>             
         </div>

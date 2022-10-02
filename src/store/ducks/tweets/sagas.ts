@@ -1,7 +1,7 @@
 import {takeEvery, call, put} from '@redux-saga/core/effects'
 import { TweetsApi } from '../../../services/api/tweetsApi'
 import { LoadingState } from '../../types'
-import { AddTweet, FetchAddTweetActionInterface, setAddFormState, setTweets, setTweetsLoadingState, TweetsActionsType } from './action'
+import { AddTweet, FetchAddTweetActionInterface, RemoveTweet, RemoveTweetActionInterface, setAddFormState, setTweets, setTweetsLoadingState, TweetsActionsType } from './action'
 import { AddFormState } from './contracts/state'
 
 
@@ -14,11 +14,21 @@ export function* fetchTweetsRequest (): any {
     }
 }
 
-export function* addTweetRequest ({payload: text}: FetchAddTweetActionInterface): any {
+export function* addTweetRequest ({payload}: FetchAddTweetActionInterface): any {
     try {
-        const item = yield call(TweetsApi.addTweet, text)
+        const item = yield call(TweetsApi.addTweet, payload)
         yield put(AddTweet(item))
     } catch (error) {
+        yield put(setAddFormState(AddFormState.ERROR))
+    }
+}
+
+export function* removeTweetRequest ({ payload }: RemoveTweetActionInterface){
+    try {
+        yield call(TweetsApi.removeTweet, payload)
+        // yield put(RemoveTweet(payload))
+    } catch (error) {
+        console.log(error, 'error from saga')
         yield put(setAddFormState(AddFormState.ERROR))
     }
 }
@@ -26,4 +36,5 @@ export function* addTweetRequest ({payload: text}: FetchAddTweetActionInterface)
 export function* tweetsSaga () {
     yield takeEvery(TweetsActionsType.FETCH_TWEETS, fetchTweetsRequest)
     yield takeEvery(TweetsActionsType.FETCH_ADD_TWEET, addTweetRequest)
+    yield takeEvery(TweetsActionsType.REMOVE_TWEET, removeTweetRequest)
 }

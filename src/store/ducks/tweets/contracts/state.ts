@@ -14,7 +14,8 @@ export interface Tweet {
         fullname: string,
         username: string,
         avatarUrl: string,
-    }
+    },
+    images: string[]
 }
 
 export interface TweetsState {

@@ -1,6 +1,14 @@
 import axios from "axios"
+// import {axios} from "../core/axios"
 
-export const uploadImage = async (image: any) => {
+interface UploadImageReturnProps {
+    height: number,
+    width: number,
+    size: number,
+    url: string
+}
+
+export const uploadImage = async (image: any): Promise<UploadImageReturnProps> => {
     const formData = new FormData()
     formData.append('image', image)
 

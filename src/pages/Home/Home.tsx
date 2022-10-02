@@ -57,15 +57,16 @@ export const Home = () => {
                     </div>
                 </Route>
                 <Route path={`/home`} exact>
-                    {isLoading ? <div>Loading</div> : tweets.map(tweet => (
-                        <Tweet 
+                    {isLoading ? <div>Loading</div> : tweets.map(tweet => {
+                        return <Tweet 
                             _id={tweet._id}
                             key={tweet._id}
                             text={tweet.text} 
                             createdAt={tweet.createdAt}
                             user={tweet.user} 
+                            images={tweet.images}
                         />
-                    ))}
+                    })}
                 </Route>
                 <Route path={'/home/tweet/:id'} component={FullTweet} exact>
 

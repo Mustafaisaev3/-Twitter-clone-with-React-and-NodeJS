@@ -12,14 +12,20 @@ import CircularProgressBar from './CircularProgressBar'
 import { useUI } from '../context/ui.context'
 import { AddFormState } from '../store/ducks/tweets/contracts/state'
 import UploadImages from './UploadImages'
+import { uploadImage } from '../utils/upload-image'
 
 
+export interface ImageObj {
+    blobUrl: string,
+    file: File
+}
 
 const AddTweetForm = () => {
     const {addToast} = useUI()
     const [textareaLength, setTextareaLength] = useState<number>(0)
     const [text, setText] = useState('')
-    const [visibleNotification, setVisibleNotification] = useState<boolean>(false)
+    const [ images, setImages ] = useState<ImageObj[]>([])
+    // const [visibleNotification, setVisibleNotification] = useState<boolean>(false)
     const dispatch = useDispatch()
 
     const addFormState = useSelector(selectAddFormState)
@@ -30,13 +36,20 @@ const AddTweetForm = () => {
         }
     }, [addFormState])
 
-    const handleCloseNotification = () => {
-        setVisibleNotification(false)
-    }
+    // const handleCloseNotification = () => {
+    //     setVisibleNotification(false)
+    // }
 
-    const handleClickAddTweet = () => {
-        dispatch(FetchAddTweet(text))
+    const handleClickAddTweet = async (): Promise<void> => {
+        let result = []
+        for (let i = 0; i < images.length; i++) {
+            const file = images[i].file
+            const { url } = await uploadImage(file)
+            result.push(url)
+        }
+        dispatch(FetchAddTweet({text, images: result}))
         setText('')
+        setImages([])
     }
   return (
     // <div className='grid grid-cols-12 hover:bg-[#f5f8fa]'>
@@ -50,7 +63,7 @@ const AddTweetForm = () => {
             <Textarea setText={setText} text={text} placeholder='Что происходит?' getTextareaLength={setTextareaLength} maxLength={281} />
             <div className='flex justify-between items-center'>
                 <div className='flex items-center'>
-                    <UploadImages />
+                    <UploadImages images={images} setImages={setImages} />
                     {/* <BiImage size={25} color={'#1d9bf0'} /> */}
                     {/* <MdOutlineTagFaces size={25} color={'#1d9bf0'}/> */}
                 </div>
